@@ -271,7 +271,7 @@ local function aimbotHandler()
 		if userDistance < closestDist then
 			closestDist = userDistance
 			closestUser = player
-		end
+		else continue end
 	end
 	
 	if closestUser == nil then return end
@@ -288,11 +288,11 @@ toggleButton.MouseButton1Click:Connect(function()
 
 	updateToggle()
 
-	if aimbotEnabled then
-		game:GetService("RunService").Heartbeat:Connect(function()
+	game:GetService("RunService").Heartbeat:Connect(function()
+		if aimbotEnabled then
 			aimbotHandler()
-		end)
-	end
+		end
+	end)
 end)
 
 openButton.MouseButton1Click:Connect(function()
